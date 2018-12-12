@@ -1,0 +1,111 @@
+package seleniumdemo;
+
+import java.util.List;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+/**
+ * @author Aditya singh
+ * Instructions:
+ * 1.Make sure selenium 3.4 and java is installed on the machine
+ * 2.Make sure chrome drive should be present in the required path i.e.C:\\Downloads\\chromedriver
+ * 3.Please provide Wallethub emailid and password to post your review .Note: I have id but I haven't given my id ans password in the code .It's configurable.
+ * 4.Please provide userid to check review comments whether it's successfully posted or not for given user.
+ *
+ */
+public class qa_test_3 {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		// Please use any other account for Wallethub login and post your review
+		// comments
+		String email_id = "<please enter email for Wallethub login>";
+		String pass = "<please enter password for Wallethub login>";
+		String userid = "<please enter user for review page>"; // Example :3020219i,It will required to generate url like https://wallethub.com/profile/" + userid + "/reviews/ at line 93
+		String review_coments = "This is test of QA.This is test of QA.This is test of QA.This is test of QA.This is test of QA.his is test of QA.This is test of QA.This is test of QA.This is test of QA.This is test of QA.his is test of QA.This is test of QA.This is test of QA.This is test of QA.";
+
+		// set the chrome browser path and make sure that chromedriver.exe will be
+		// present in the given path i.e.C:\\Downloads\\chromedriver
+		System.setProperty("webdriver.chrome.drive", "C:\\Downloads\\chromedriver");
+		WebDriver driver = new ChromeDriver();
+
+		// navigate to the test_insurance company page to give review
+		driver.navigate().to("https://wallethub.com/profile/test_insurance_company/");
+		driver.manage().window().maximize();
+		Thread.sleep(7000);
+
+		// close the popup present in the lower right of the page
+		try {
+			WebElement popup = driver.findElement(By.cssSelector("i.af-icon-cross"));
+			popup.click();
+		} catch (Exception e) {
+			System.out.println("pass");
+		}
+
+		// Create instance of action class to hover on the stars
+		Actions action = new Actions(driver);
+		WebElement star = driver.findElement(By.cssSelector("span.wh-rating.rating_4_5"));
+		action.moveToElement(star).click().build().perform();
+		Thread.sleep(5000);
+
+		// Give rating 5
+		String star5 = "//div[@class='wh-rating-choices-holder']/a[contains(@href, '#')][5]";
+		WebElement srating5 = driver.findElement(By.xpath(star5));
+		action.moveToElement(srating5).click().build().perform();
+		Thread.sleep(10000);
+
+		// Select the policy from drop down and give the review comments
+		WebElement dropdown = driver.findElement(By.cssSelector("span.drop-arrow>i.bf-icon-down-open"));
+		dropdown.click();
+		List<WebElement> list_of_policy = driver.findElements(By.cssSelector("ul.drop-el >li>a"));
+		for (WebElement s : list_of_policy) {
+			if (s.getText().equals("Health")) {
+				s.click();
+			}
+		}
+
+		Thread.sleep(3000);
+
+		// select rating in the review page
+		List<WebElement> rating = driver.findElements(By.cssSelector("a.bf-icon-star-empty.star.bstar"));
+		System.out.println("This is rating");
+		System.out.println(rating);
+		action.moveToElement(rating.get(4));
+		action.click().build().perform();
+		Thread.sleep(3000);
+
+		// enter review comments and click on submit button
+		WebElement review_content = driver.findElement(By.id("review-content"));
+
+		review_content.clear();
+		review_content.sendKeys(review_coments);
+		Thread.sleep(10000);
+		WebElement submit_btn = driver.findElement(By.cssSelector("input.btn.blue"));
+		submit_btn.click();
+		Thread.sleep(10000);
+
+		// login into your account to post your review
+		WebElement signin = driver.findElement(By.xpath("//*[@id=\"join-light\"]/form/div/nav/ul/li[2]/a"));
+		signin.click();
+		WebElement email = driver.findElement(By.xpath("//*[@id=\"join-light\"]/form/div/div[1]/input"));
+		email.sendKeys(email_id);
+		WebElement password = driver.findElement(By.xpath("//*[@id=\"join-light\"]/form/div/div[2]/input"));
+		password.sendKeys(pass);
+		WebElement login_btn = driver.findElement(By.xpath("//*[@id=\"join-light\"]/form/div/div[3]/button"));
+		login_btn.click();
+
+		// check review comments on the profile review page
+		driver.navigate().to("https://wallethub.com/profile/" + userid + "/reviews/");
+		WebElement feedback_comment = driver.findElement(By.cssSelector("div.review-first>p"));
+		if (feedback_comment.getText().equals(review_coments)) {
+			Assert.assertTrue(true);
+		}
+		driver.quit();
+
+	}
+
+}

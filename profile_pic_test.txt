@@ -1,0 +1,59 @@
+
+
+1.Verify that upload image button should be enable in setting page
+
+Steps.
+1.Sign into wallethub.com using username and password
+2.Go to home->setting->Public info
+3.check Upload image button is enabled.
+
+Expected: Button should be enabled
+
+2.Verify that image will accept .png/.jpg format .
+
+steps:
+1.Sign into wallethub.com using username and password
+2.Go to home->setting->Public info
+3.Click on Upload image button and try to upload photo which does not have .png or.jpg format
+
+
+Expected :Error popup should be given if we try to upload any other format
+
+
+
+3.Verify that save and cancel button will properly after uploading pic.
+steps:
+1.Sign into wallethub.com using username and password
+2.Go to home->setting->Public info
+3.Click on Upload image button and try to upload photo.
+4.Check save and Cancel button works properly
+
+
+Expected: On click on save button profile pic should saved successfully and it should b displayed on https://wallethub.com/profile/3020219i/ page.
+On click of cancel button photo will be removed and Upload Image button should appear
+
+
+
+
+4.Verify that we can adjust profile photo using crop functionality given on photo
+steps:
+1.Sign into wallethub.com using username and password
+2.Go to home->setting->Public info
+3.Click on Upload image button and try to upload photo.
+4.Try to select the portion which you want to display in the profile photo
+
+
+Expected :You should be able to select the portion in the uploaded image .
+
+
+5.Verify that Uploaded image will be have size limit of max 2MB. It will not allowed to upload more than 2 MB.
+
+steps:
+1.Sign into wallethub.com using username and password
+2.Go to home->setting->Public info
+3.Click on Upload image button and try to upload image having size more than 2MB.
+
+Expcted :It should give wanring message that you can't upload image having size more than 2MB.
+
+
+

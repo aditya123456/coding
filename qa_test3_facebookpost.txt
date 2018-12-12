@@ -1,0 +1,56 @@
+package seleniumdemo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+/**
+ * @author Aditya Singh
+ *  Instructions:
+ * 1.Make sure selenium 3.4 and java is installed on the machine
+ * 2.Make sure chrome drive should be present in the required path i.e.C:\\Downloads\\chromedriver
+ * 3.Please provide facebook emailid and password to post your review .
+ 
+ *
+ */
+public class qa_test3_facebookpost {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		String email_id = "<Set Email Id here>";
+		String password = "<Set password here>";
+
+		// set the chrome browser path and disable the facebook notification .Make sure
+		// that chromedriver.exe will be present in the given path
+		// i.e.C:\\Downloads\\chromedriver
+		ChromeOptions ops = new ChromeOptions();
+		ops.addArguments("--disable-notifications");
+		System.setProperty("webdriver.chrome.drive", "C:\\Downloads\\chromedriver");
+		ChromeDriver driver = new ChromeDriver(ops);
+
+		// Navigate to facebook site
+		driver.navigate().to("https://www.facebook.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(7000);
+
+		// Login into facebook using emailid and password
+		WebElement email = driver.findElement(By.id("email"));
+		WebElement pass = driver.findElement(By.id("pass"));
+		WebElement login_btn = driver.findElement(By.cssSelector("label#loginbutton>input"));
+		email.sendKeys(email_id);
+		pass.sendKeys(password);
+		login_btn.click();
+		Thread.sleep(7000);
+
+		// Enter the post on facebook wall
+		WebElement status = driver.findElement(By.name("xhpc_message"));
+		status.click();
+		status.sendKeys("Hello World");
+		WebElement post_btn = driver.findElement(By.xpath("//button[contains(.,'Post')]"));
+		post_btn.click();
+		driver.quit();
+
+	}
+
+}
