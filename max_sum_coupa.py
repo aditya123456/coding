@@ -1,13 +1,11 @@
 
-
+A = [4, 10, 2, 13, 15, 4, 1, 20, 15]
 
 def max_sum(A, N):
     result = 0
-
-
     for i in range( N):
         if i % 2 != 0:
-            result =  result + max(A)
+            result = result + max(A)
             index = A.index(max(A))
             A.pop(index)
         else:

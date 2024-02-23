@@ -1,4 +1,6 @@
 
+A = [2, 2, 2, 3, 3, 4, 5, 6, 6]
+M=4
 
 
 def countdigit(A, M, N):
@@ -7,8 +9,6 @@ def countdigit(A, M, N):
     result = 0
 
     for i in range( N):
-        # for j in range(i+1, N):
-        #     if A[i] == A[j]:
         if A[i] in digitdict:
             digitdict[A[i]] = digitdict[A[i]] + 1
         else:
