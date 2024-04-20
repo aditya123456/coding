@@ -120,11 +120,18 @@ password1 = "123Ab@gggg"  # Valid password
 password2 = "WeakPass"  # Invalid (less than 8 characters)
 password3 = "NoDigitsHere"  # Invalid (no digits)
 password4 = "password123"  # Invalid (contains the sequence 'password')
+#
+# print("Password 1:", validate_password(password1))  # Output: True
+# print("Password 2:", validate_password(password2))  # Output: False
+# print("Password 3:", validate_password(password3))  # Output: False
+# print("Password 4:", validate_password(password4))  # Output: False
+#
 
-print("Password 1:", validate_password(password1))  # Output: True
-print("Password 2:", validate_password(password2))  # Output: False
-print("Password 3:", validate_password(password3))  # Output: False
-print("Password 4:", validate_password(password4))  # Output: False
+
+ip_pattern = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
+text = "The server's IP address is 192.168.1.1 and the client's IP address is 10.0.0.1."
+ip_addresses = re.findall(ip_pattern, text)
+print(ip_addresses)
 
 
 

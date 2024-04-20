@@ -11,6 +11,6 @@ for  i in range(len(a)-1,0):
 	tmp =a[i]
 	a[i] =a[max]
 	a[max] = tmp
-print a
+print(a)
 		
 			

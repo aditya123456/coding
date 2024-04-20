@@ -18,7 +18,7 @@ class Stack:
         return len(self.stack)==0
 
 
-parentthesis = "((((([[[[[[[]]]]]]]))))))"
+parentthesis = "())"
 s = Stack()
 flag = True
 for i in parentthesis:
