@@ -1,7 +1,7 @@
 def rotate(arr, n):
-    last_el = arr[n - 1]
+    last_el = arr[n - 2]
 
-    for i in range(n - 1, 0, -1):
+    for i in range(n - 2, 0, -1):
         arr[i] = arr[i - 1]
 
     arr[0] = last_el
