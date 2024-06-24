@@ -1,0 +1,6 @@
+ProductID,ProductName,Category,Price,Stock
+1001,Product A,Category 1,25.00,100
+1002,Product B,Category 2,40.00,150
+1003,Product C,Category 1,35.00,200
+1004,Product D,Category 3,20.00,250
+1005,Product E,Category 2,30.00,300

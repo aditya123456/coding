@@ -1,0 +1,6 @@
+TransactionID,ProductName,Quantity,Price,TransactionDate
+101,Widget A,5,20.00,2024-06-01
+102,Widget B,3,15.00,2024-06-02
+103,Gadget C,7,30.00,2024-06-03
+104,Gadget D,2,50.00,2024-06-04
+105,Widget E,4,25.00,2024-06-05
